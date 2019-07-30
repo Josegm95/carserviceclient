@@ -1,0 +1,21 @@
+<form #ownerForm="ngForm" (ngSubmit)="saveOwner(ownerForm.value)" class="form-container">
+  <h2>{{ title }}</h2>
+  <div class="form-item">
+    <label>Dni</label>
+    <input type="text" name="dni" [(ngModel)]="owner.dni" />
+  </div>
+  <div class="form-item">
+    <label>Profession</label>
+    <input type="text" name="profession" [(ngModel)]="owner.profession" />
+  </div>
+  <div class="form-item">
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="owner.name" />
+  </div>
+  <div>
+    <input type="hidden" name="href" [(ngModel)]="owner.href" />
+    <button type="submit" class="save">Save</button>
+    <button type="button" *ngIf="owner.href" (click)="deleteOwner(owner.href)" class="delete">delete</button>
+    <button [routerLink]="['/owner-list']">Cancel</button>
+  </div>
+</form>

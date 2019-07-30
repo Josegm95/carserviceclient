@@ -1,0 +1,9 @@
+<div class="list-container">
+  <h2>Owner List</h2>
+  <div class="owner-container" *ngFor="let owner of owners">
+    <p>Name: {{ owner.name }}</p>
+    <p>Profession: {{ owner.profession }}</p>
+    <button [routerLink]="['/owner-edit', owner.dni]">Edit</button>
+  </div>
+  <button [routerLink]="['/owner-add']" class="add-button">New Owner</button>
+</div>

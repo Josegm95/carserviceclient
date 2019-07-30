@@ -1,0 +1,50 @@
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.owner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 3vh auto;
+  padding: 30px;
+  background-color: rgb(61, 61, 61);
+  color: white;
+  border-radius: 4px;
+}
+
+.owner-container p {
+  margin-bottom: 20px;
+}
+
+.owner-container button {
+  width: 20%;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.owner-container button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.add-button {
+  width: 10%;
+  height: 40px;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgb(44, 44, 255);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.add-button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}

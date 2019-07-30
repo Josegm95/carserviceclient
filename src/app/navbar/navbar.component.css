@@ -1,0 +1,18 @@
+.navbar {
+  padding: 0 10vh;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(61, 61, 61);
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+  margin: 10px 20px;
+  font-size: 25px;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid white;
+}
