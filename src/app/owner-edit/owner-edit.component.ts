@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwnersService } from '../shared/owners/owners.service';
+import { CarService } from '../shared/car/car.service';
 
 @Component({
   selector: 'app-owner-edit',
@@ -11,8 +12,14 @@ import { OwnersService } from '../shared/owners/owners.service';
 export class OwnerEditComponent implements OnInit {
   private owner: any = {};
   private title: string = '';
+  private cars: any[];
 
-  constructor(private route: ActivatedRoute, private ownerService: OwnersService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private ownerService: OwnersService,
+    private router: Router,
+    private carService: CarService
+  ) {}
 
   ngOnInit() {
     const dni: string = this.route.snapshot.params.dni;
@@ -28,6 +35,10 @@ export class OwnerEditComponent implements OnInit {
     } else {
       this.title = 'Create Owner';
     }
+
+    this.carService.getAllHref().subscribe((cars: any) => {
+      this.cars = cars._embedded.cars;
+    });
   }
 
   goList() {
@@ -41,8 +52,17 @@ export class OwnerEditComponent implements OnInit {
   }
 
   deleteOwner(href: string) {
-    this.ownerService.remove(href).subscribe((data) => {
+    this.ownerService.remove(href).subscribe(data => {
       this.goList();
+      this.cars.forEach((car: any) => {
+        if (car.ownerDni === this.owner.dni) {
+          const carSave: any = {};
+          carSave.href = car._links.self.href;
+          carSave.name = car.name;
+          carSave.ownerDni = null;
+          this.carService.save(carSave).subscribe();
+        }
+      });
     });
   }
 }

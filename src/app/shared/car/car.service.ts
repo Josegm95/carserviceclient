@@ -13,6 +13,10 @@ export class CarService {
     return this.http.get(this.API + '/cool-cars');
   }
 
+  getAllHref(): Observable<any> {
+    return this.http.get(this.CAR_API);
+  }
+
   get(id: string): Observable<any> {
     return this.http.get(this.CAR_API + '/' + id);
   }
